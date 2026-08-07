@@ -1,0 +1,47 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "vitest run",
+    "eval:guardrails": "vitest run --config vitest.eval.config.mts src/lib/guardrails",
+    "eval:tutor": "vitest run --config vitest.eval.config.mts src/lib/tutor/tutor.eval.ts",
+    "eval:grade": "vitest run --config vitest.eval.config.mts src/lib/tutor/grade.eval.ts"
+  },
+  "dependencies": {
+    "@ai-sdk/groq": "4.0.61",
+    "@ai-sdk/openai-compatible": "3.0.65",
+    "@marsidev/react-turnstile": "1.6.1",
+    "@streamdown/math": "1.0.3",
+    "@supabase/ssr": "0.12.7",
+    "@supabase/supabase-js": "2.117.2",
+    "ai": "7.0.130",
+    "clsx": "2.1.1",
+    "file-type": "22.1.1",
+    "katex": "0.16.47",
+    "lucide-react": "1.52.0",
+    "next": "16.4.0",
+    "radix-ui": "1.7.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "streamdown": "2.7.0",
+    "tailwind-merge": "3.7.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "^4",
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.0",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "vitest": "5.0.3"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "aurel",
+  "private": true,
+  "license": "Apache-2.0",
+  "packageManager": "pnpm@12.4.1",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm knowledge:check",
+    "knowledge:dev": "cd services/knowledge && uv run fastapi dev",
+    "knowledge:check": "cd services/knowledge && uv run ruff check && uv run ruff format --check && uv run mypy && uv run pytest",
+    "db:reset": "supabase db reset",
+    "db:test": "supabase test db",
+    "db:types": "supabase gen types typescript --local --schema public > apps/web/src/lib/db/database-types.ts && prettier --write apps/web/src/lib/db/database-types.ts",
+    "test": "pnpm -r test"
+  },
+  "devDependencies": {
+    "lefthook": "2.1.17",
+    "prettier": "3.9.9"
+  }
+}

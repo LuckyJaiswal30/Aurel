@@ -1,0 +1,27 @@
+packages:
+  - apps/*
+
+allowBuilds:
+  sharp: false
+  unrs-resolver: false
+  lefthook: true
+
+minimumReleaseAgeExclude:
+  - "@next/env@16.4.0"
+  - "@next/eslint-plugin-next@16.4.0"
+  - "@next/swc-darwin-arm64@16.4.0"
+  - "@next/swc-darwin-x64@16.4.0"
+  - "@next/swc-linux-arm64-gnu@16.4.0"
+  - "@next/swc-linux-arm64-musl@16.4.0"
+  - "@next/swc-linux-x64-gnu@16.4.0"
+  - "@next/swc-linux-x64-musl@16.4.0"
+  - "@next/swc-win32-arm64-msvc@16.4.0"
+  - "@next/swc-win32-x64-msvc@16.4.0"
+  - eslint-config-next@16.4.0
+  - next@16.4.0
+  - "@ai-sdk/gateway@4.0.106"
+  - "@ai-sdk/openai-compatible@3.0.65"
+  - "@ai-sdk/provider-utils@5.0.56 || 5.0.60"
+  - "@ai-sdk/provider@4.0.24"
+  - ai@7.0.130
+  - "@ai-sdk/groq@4.0.61"

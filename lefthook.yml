@@ -1,0 +1,22 @@
+pre-commit:
+  parallel: true
+  jobs:
+    - name: prettier
+      glob: "*.{ts,tsx,js,mjs,json,css,md,yml,yaml}"
+      run: pnpm exec prettier --check {staged_files}
+    - name: web lint
+      root: apps/web/
+      glob: "apps/web/**/*.{ts,tsx,js,mjs}"
+      run: pnpm lint
+    - name: web typecheck
+      root: apps/web/
+      glob: "apps/web/**/*.{ts,tsx}"
+      run: pnpm typecheck
+    - name: web tests
+      root: apps/web/
+      glob: "apps/web/**/*.{ts,tsx}"
+      run: pnpm test
+    - name: knowledge checks
+      root: services/knowledge/
+      glob: "services/knowledge/**/*.{py,toml}"
+      run: uv run ruff check && uv run ruff format --check && uv run mypy && uv run pytest -q
