@@ -1,0 +1,492 @@
+{
+  "version": 1,
+  "description": "Phase 1 gate: about 80% correct. Notes are in evals/notes. Grade an answer correct when it states every key point without contradicting the notes, cites the right section, and replies in the question's language.",
+  "notes": {
+    "artificial-intelligence": "evals/notes/artificial-intelligence.md",
+    "machine-learning": "evals/notes/machine-learning.md"
+  },
+  "questions": [
+    {
+      "id": "ai-01",
+      "subject": "artificial-intelligence",
+      "language": "english",
+      "answer_format": "explain",
+      "expected_source": "notes",
+      "question": "What is a rational agent?",
+      "expected_answer": "An agent that, for each percept sequence, chooses the action expected to maximise its performance measure, given its percepts and built-in knowledge. Rational is not omniscient: it maximises expected, not actual, performance.",
+      "key_points": [
+        "maximises expected performance measure",
+        "based on percept sequence and prior knowledge",
+        "rational is not omniscient"
+      ],
+      "source_section": "Unit 2.2 Rationality"
+    },
+    {
+      "id": "ai-02",
+      "subject": "artificial-intelligence",
+      "language": "english",
+      "answer_format": "exam_answer_5",
+      "expected_source": "notes",
+      "question": "Give the PEAS description of an automated taxi driver. (5 marks)",
+      "expected_answer": "Performance: safe, fast, legal, comfortable trip, maximise profit. Environment: roads, other traffic, pedestrians, customers. Actuators: steering, accelerator, brake, signal, horn, display. Sensors: cameras, sonar, speedometer, GPS, odometer, engine sensors.",
+      "key_points": [
+        "PEAS = Performance, Environment, Actuators, Sensors",
+        "performance items",
+        "environment items",
+        "actuator items",
+        "sensor items"
+      ],
+      "source_section": "Unit 2.3 PEAS description"
+    },
+    {
+      "id": "ai-03",
+      "subject": "artificial-intelligence",
+      "language": "english",
+      "answer_format": "compare",
+      "expected_source": "notes",
+      "question": "Compare BFS, DFS and iterative deepening search on completeness, optimality, time and space.",
+      "expected_answer": "BFS: complete, optimal for equal step costs, O(b^d) time and space. DFS: not complete, not optimal, O(b^m) time, O(bm) space. IDDFS: complete, optimal for equal step costs, O(b^d) time, O(bd) space, so it combines DFS's low memory with BFS's completeness.",
+      "key_points": [
+        "BFS complete and optimal with equal costs, O(b^d) space",
+        "DFS incomplete and not optimal, O(bm) space",
+        "IDDFS complete and optimal with O(bd) space",
+        "IDDFS preferred when depth unknown"
+      ],
+      "source_section": "Unit 3.3 Uninformed search"
+    },
+    {
+      "id": "ai-04",
+      "subject": "artificial-intelligence",
+      "language": "english",
+      "answer_format": "define",
+      "expected_source": "notes",
+      "question": "What is the difference between an admissible and a consistent heuristic?",
+      "expected_answer": "Admissible: h(n) never overestimates the true cost to the goal, h(n) <= h*(n). Consistent: h(n) <= c(n, a, n') + h(n') for every successor n'. Every consistent heuristic is admissible. Admissible gives optimal A* tree search; consistent gives optimal A* graph search.",
+      "key_points": [
+        "admissible h(n) <= h*(n)",
+        "consistent h(n) <= c(n,a,n') + h(n')",
+        "consistent implies admissible",
+        "tree search vs graph search optimality"
+      ],
+      "source_section": "Unit 3.4 Informed search"
+    },
+    {
+      "id": "ai-05",
+      "subject": "artificial-intelligence",
+      "language": "english",
+      "answer_format": "steps",
+      "expected_source": "notes",
+      "question": "Using the A* example graph in my notes (S, A, B, G with h(S)=7, h(A)=6, h(B)=4), trace A* and give the optimal path and its cost.",
+      "expected_answer": "Expand S (A f=7, B f=8); expand A (B via A g=3 f=7, G via A f=13); expand B (G g=8 f=8); expand G. Optimal path S -> A -> B -> G with cost 8.",
+      "key_points": [
+        "f = g + h",
+        "expansion order S, A, B, G",
+        "path S-A-B-G",
+        "cost 8"
+      ],
+      "source_section": "Unit 3.5 Worked example: A* search"
+    },
+    {
+      "id": "ai-06",
+      "subject": "artificial-intelligence",
+      "language": "english",
+      "answer_format": "explain",
+      "expected_source": "notes",
+      "question": "Why does hill climbing get stuck, and how does simulated annealing help?",
+      "expected_answer": "Hill climbing always moves to the best neighbour, so it gets stuck at local maxima, plateaus and ridges. Simulated annealing sometimes accepts worse moves with probability e^(dE/T), where the temperature T decreases over time, letting it escape local maxima.",
+      "key_points": [
+        "local maxima, plateaus, ridges",
+        "accepts worse moves with probability e^(dE/T)",
+        "temperature decreases over time"
+      ],
+      "source_section": "Unit 3.7 Local search"
+    },
+    {
+      "id": "ai-07",
+      "subject": "artificial-intelligence",
+      "language": "english",
+      "answer_format": "steps",
+      "expected_source": "notes",
+      "question": "A MAX root has two MIN children. The left child has leaves 3 and 5, the right child has leaves 2 and 9. Apply alpha-beta pruning: which leaf is pruned and what is the root value?",
+      "expected_answer": "Left MIN = 3, so alpha = 3 at the root. The right MIN's first leaf is 2, so its value is at most 2 < alpha; leaf 9 is pruned. Root value = 3, MAX picks the left move.",
+      "key_points": [
+        "left value 3",
+        "alpha = 3",
+        "leaf 9 pruned",
+        "root value 3"
+      ],
+      "source_section": "Unit 4.3 Alpha-beta pruning"
+    },
+    {
+      "id": "ai-08",
+      "subject": "artificial-intelligence",
+      "language": "english",
+      "answer_format": "explain",
+      "expected_source": "notes",
+      "question": "Explain the MRV and least constraining value heuristics in CSP backtracking.",
+      "expected_answer": "MRV picks the variable with the fewest legal values left (most constrained) first, with the degree heuristic as tie-breaker. Least constraining value tries first the value that rules out the fewest choices for neighbouring variables.",
+      "key_points": [
+        "MRV = fewest remaining values, variable ordering",
+        "degree heuristic breaks ties",
+        "LCV = value that leaves most options, value ordering"
+      ],
+      "source_section": "Unit 5.2 Solving CSPs"
+    },
+    {
+      "id": "ai-09",
+      "subject": "artificial-intelligence",
+      "language": "english",
+      "answer_format": "steps",
+      "expected_source": "notes",
+      "question": "Given KB = {P => Q, Q => R, P}, prove R using resolution.",
+      "expected_answer": "CNF: (not P or Q), (not Q or R), (P); add negated goal (not R). Resolve not R with (not Q or R) to get not Q; with (not P or Q) to get not P; with P to get the empty clause. Contradiction, so KB entails R.",
+      "key_points": [
+        "convert to CNF",
+        "add negated goal",
+        "three resolution steps",
+        "empty clause proves R"
+      ],
+      "source_section": "Unit 6.3 CNF and resolution"
+    },
+    {
+      "id": "ai-10",
+      "subject": "artificial-intelligence",
+      "language": "english",
+      "answer_format": "exam_answer_2",
+      "expected_source": "notes",
+      "question": "Differentiate forward chaining and backward chaining. (2 marks)",
+      "expected_answer": "Forward chaining is data-driven: starts from known facts and fires rules until the goal is reached. Backward chaining is goal-driven: starts from the goal and works back to supporting facts (used by Prolog). Both work on Horn clauses.",
+      "key_points": [
+        "forward = data-driven from facts",
+        "backward = goal-driven from goal",
+        "Horn clauses"
+      ],
+      "source_section": "Unit 6.4 Forward and backward chaining"
+    },
+    {
+      "id": "ai-11",
+      "subject": "artificial-intelligence",
+      "language": "english",
+      "answer_format": "steps",
+      "expected_source": "notes",
+      "question": "A disease affects 1% of people. The test is positive 90% of the time when the disease is present and 5% of the time when it is absent. If someone tests positive, what is the chance they have the disease?",
+      "expected_answer": "P(+) = 0.9 x 0.01 + 0.05 x 0.99 = 0.0585. P(D|+) = 0.009 / 0.0585 = about 0.154 (15.4%). It is low because the disease is rare (base-rate fallacy).",
+      "key_points": [
+        "Bayes' theorem",
+        "P(+) = 0.0585",
+        "answer about 0.154 or 15.4%",
+        "base rate explains the low value"
+      ],
+      "source_section": "Unit 7.2 Bayes' theorem"
+    },
+    {
+      "id": "ai-12",
+      "subject": "artificial-intelligence",
+      "language": "english",
+      "answer_format": "exam_answer_10",
+      "expected_source": "notes",
+      "question": "Explain Bayesian networks with an example. (10 marks)",
+      "expected_answer": "A DAG where nodes are random variables, edges show direct influence from parent to child, and each node has a CPT P(node | parents). The joint is the product of P(Xi | Parents(Xi)); each node is conditionally independent of non-descendants given its parents, so it is compact. Example: Burglary and Earthquake cause Alarm, which causes JohnCalls and MaryCalls. Inference is exact (enumeration, variable elimination) or approximate (rejection sampling, likelihood weighting, Gibbs sampling).",
+      "key_points": [
+        "directed acyclic graph",
+        "CPT per node",
+        "joint = product of local conditionals",
+        "conditional independence given parents",
+        "burglary example",
+        "exact and approximate inference"
+      ],
+      "source_section": "Unit 7.3 Bayesian networks"
+    },
+    {
+      "id": "ai-13",
+      "subject": "artificial-intelligence",
+      "language": "hindi",
+      "answer_format": "explain",
+      "expected_source": "notes",
+      "question": "ट्यूरिंग टेस्ट क्या है? इसे पास करने के लिए मशीन में कौन-कौन सी क्षमताएँ चाहिए?",
+      "expected_answer": "1950 में एलन ट्यूरिंग द्वारा प्रस्तावित: एक मानव पूछताछकर्ता टेक्स्ट में एक छिपे मानव और एक मशीन से बात करता है; अगर वह मशीन को पहचान नहीं पाता तो मशीन पास है। ज़रूरी क्षमताएँ: natural language processing, knowledge representation, automated reasoning, machine learning। Total Turing test में computer vision और robotics भी।",
+      "key_points": [
+        "Alan Turing 1950",
+        "interrogator cannot tell machine from human",
+        "four capabilities",
+        "total Turing test adds vision and robotics",
+        "answer in Hindi"
+      ],
+      "source_section": "Unit 1.2 The Turing Test"
+    },
+    {
+      "id": "ai-14",
+      "subject": "artificial-intelligence",
+      "language": "hinglish",
+      "answer_format": "explain",
+      "expected_source": "notes",
+      "question": "utility based agent aur goal based agent me kya difference hai? simple me samjhao",
+      "expected_answer": "Goal-based agent sirf yeh dekhta hai ki goal reach hua ya nahi, aur search/planning se actions choose karta hai. Utility-based agent ek utility function se measure karta hai ki state kitni desirable hai, isliye conflicting goals aur uncertainty me trade-off kar sakta hai.",
+      "key_points": [
+        "goal-based: goal reached or not, uses search or planning",
+        "utility-based: utility function measures desirability",
+        "utility handles trade-offs and uncertainty",
+        "answer in Hinglish"
+      ],
+      "source_section": "Unit 2.5 Types of agent programs"
+    },
+    {
+      "id": "ml-01",
+      "subject": "machine-learning",
+      "language": "english",
+      "answer_format": "define",
+      "expected_source": "notes",
+      "question": "State Tom Mitchell's definition of machine learning and apply it to a spam filter.",
+      "expected_answer": "A program learns from experience E with respect to tasks T and performance measure P if its performance at T, measured by P, improves with E. Spam filter: T = classifying emails as spam or not, P = percentage classified correctly, E = emails labelled by users.",
+      "key_points": [
+        "task T, performance P, experience E",
+        "performance improves with experience",
+        "spam filter mapping of T, P, E"
+      ],
+      "source_section": "Unit 1.1 What is Machine Learning?"
+    },
+    {
+      "id": "ml-02",
+      "subject": "machine-learning",
+      "language": "english",
+      "answer_format": "steps",
+      "expected_source": "notes",
+      "question": "Fit a simple linear regression line to the points (1, 3), (2, 5), (3, 7). What does it predict for x = 4?",
+      "expected_answer": "x mean = 2, y mean = 5. w = 4 / 2 = 2, b = 5 - 2 x 2 = 1. Line y = 2x + 1; for x = 4 it predicts 9.",
+      "key_points": [
+        "least squares formulas",
+        "w = 2",
+        "b = 1",
+        "prediction 9"
+      ],
+      "source_section": "Unit 3.3 Least squares solution"
+    },
+    {
+      "id": "ml-03",
+      "subject": "machine-learning",
+      "language": "english",
+      "answer_format": "explain",
+      "expected_source": "notes",
+      "question": "What happens in gradient descent if the learning rate is too small or too large? Name the three variants.",
+      "expected_answer": "Too small: converges very slowly. Too large: overshoots and may diverge. Variants: batch (whole dataset per update), stochastic (one sample per update), mini-batch (small batches, the usual choice).",
+      "key_points": [
+        "update w := w - alpha dJ/dw",
+        "too small = slow",
+        "too large = overshoot or diverge",
+        "batch, stochastic, mini-batch"
+      ],
+      "source_section": "Unit 3.4 Gradient descent"
+    },
+    {
+      "id": "ml-04",
+      "subject": "machine-learning",
+      "language": "english",
+      "answer_format": "explain",
+      "expected_source": "notes",
+      "question": "Why is logistic regression called a classifier, and why doesn't it use MSE as its cost?",
+      "expected_answer": "It passes w.x + b through the sigmoid to get P(y=1|x) between 0 and 1 and predicts class 1 when it is at least 0.5, with a linear decision boundary. MSE with the sigmoid gives a non-convex cost with many local minima; log loss (binary cross-entropy) is convex.",
+      "key_points": [
+        "sigmoid outputs a probability",
+        "threshold 0.5, linear boundary",
+        "MSE non-convex with sigmoid",
+        "log loss is convex"
+      ],
+      "source_section": "Unit 4 Logistic Regression"
+    },
+    {
+      "id": "ml-05",
+      "subject": "machine-learning",
+      "language": "english",
+      "answer_format": "steps",
+      "expected_source": "notes",
+      "question": "A classifier has TP = 40, FP = 10, FN = 20, TN = 30. Calculate accuracy, precision, recall and F1 score.",
+      "expected_answer": "Accuracy = 70/100 = 0.70. Precision = 40/50 = 0.80. Recall = 40/60 = 0.667. F1 = 2 x 0.8 x 0.667 / 1.467 = 0.727.",
+      "key_points": [
+        "accuracy 0.70",
+        "precision 0.80",
+        "recall about 0.667",
+        "F1 about 0.727"
+      ],
+      "source_section": "Unit 5.2 Metrics"
+    },
+    {
+      "id": "ml-06",
+      "subject": "machine-learning",
+      "language": "english",
+      "answer_format": "explain",
+      "expected_source": "notes",
+      "question": "Why is accuracy a misleading metric for fraud detection?",
+      "expected_answer": "Fraud data is imbalanced: if 99% of transactions are genuine, always predicting genuine gives 99% accuracy but catches no fraud. Recall (and precision or F1) matter more, since missing fraud (false negatives) is costly.",
+      "key_points": [
+        "imbalanced data",
+        "99% accuracy while catching nothing",
+        "use recall, precision or F1"
+      ],
+      "source_section": "Unit 5.2 Metrics"
+    },
+    {
+      "id": "ml-07",
+      "subject": "machine-learning",
+      "language": "english",
+      "answer_format": "exam_answer_5",
+      "expected_source": "notes",
+      "question": "Explain the bias-variance trade-off. (5 marks)",
+      "expected_answer": "Expected test error = bias squared + variance + irreducible error. High bias (too simple) underfits: bad on train and test. High variance (too complex) overfits: good on train, bad on test. More complexity lowers bias and raises variance; choose the complexity minimising total error. Fixes: regularisation, more data, cross-validation for overfitting; more complex model or features for underfitting.",
+      "key_points": [
+        "error = bias^2 + variance + noise",
+        "high bias = underfitting",
+        "high variance = overfitting",
+        "complexity trade-off",
+        "remedies"
+      ],
+      "source_section": "Unit 6 Bias, Variance, Overfitting and Regularisation"
+    },
+    {
+      "id": "ml-08",
+      "subject": "machine-learning",
+      "language": "english",
+      "answer_format": "compare",
+      "expected_source": "notes",
+      "question": "Compare L1 and L2 regularisation.",
+      "expected_answer": "L2 (Ridge) adds lambda times the sum of squared weights and shrinks weights towards zero but rarely to exactly zero. L1 (Lasso) adds lambda times the sum of absolute weights and can set weights exactly to zero, performing feature selection. Elastic Net combines both; large lambda leads to underfitting.",
+      "key_points": [
+        "L2 squared penalty, shrinks",
+        "L1 absolute penalty, exact zeros",
+        "L1 does feature selection",
+        "lambda controls strength"
+      ],
+      "source_section": "Unit 6.3 Regularisation"
+    },
+    {
+      "id": "ml-09",
+      "subject": "machine-learning",
+      "language": "english",
+      "answer_format": "steps",
+      "expected_source": "notes",
+      "question": "In the play-tennis dataset (9 Yes, 5 No), compute the entropy of the whole set and the information gain of Outlook.",
+      "expected_answer": "Entropy = -(9/14)log2(9/14) - (5/14)log2(5/14) = 0.940. Outlook: Sunny 2/3 (0.971), Overcast 4/0 (0), Rain 3/2 (0.971). Weighted = 0.694. Gain = 0.940 - 0.694 = 0.246.",
+      "key_points": [
+        "entropy 0.940",
+        "subset entropies 0.971, 0, 0.971",
+        "weighted entropy 0.694",
+        "gain about 0.246 (0.247 unrounded)"
+      ],
+      "source_section": "Unit 8.2 Choosing splits"
+    },
+    {
+      "id": "ml-10",
+      "subject": "machine-learning",
+      "language": "english",
+      "answer_format": "define",
+      "expected_source": "notes",
+      "question": "What is the 'naive' assumption in Naive Bayes, and why is Laplace smoothing used?",
+      "expected_answer": "All features are assumed conditionally independent given the class, so P(C|x) is proportional to P(C) times the product of P(xi|C). Laplace (add-one) smoothing stops a zero count from making the whole product zero.",
+      "key_points": [
+        "conditional independence given the class",
+        "product of likelihoods times prior",
+        "Laplace smoothing avoids zero probabilities"
+      ],
+      "source_section": "Unit 9 Naive Bayes"
+    },
+    {
+      "id": "ml-11",
+      "subject": "machine-learning",
+      "language": "english",
+      "answer_format": "exam_answer_10",
+      "expected_source": "notes",
+      "question": "Explain Support Vector Machines, including support vectors, margin, soft margin and the kernel trick. (10 marks)",
+      "expected_answer": "SVM finds the hyperplane w.x + b = 0 with maximum margin. Support vectors are the closest points and decide the hyperplane. Margin = 2/||w||, so maximise margin by minimising ||w||. Hard margin allows no errors; soft margin allows some, controlled by C (large C = narrow margin, overfitting risk; small C = wider margin). Kernel trick computes inner products in a higher-dimensional space without the explicit mapping; kernels: linear, polynomial, RBF.",
+      "key_points": [
+        "maximum-margin hyperplane",
+        "support vectors",
+        "margin 2/||w||",
+        "soft margin and C",
+        "kernel trick with linear, polynomial, RBF"
+      ],
+      "source_section": "Unit 10 Support Vector Machines"
+    },
+    {
+      "id": "ml-12",
+      "subject": "machine-learning",
+      "language": "english",
+      "answer_format": "steps",
+      "expected_source": "notes",
+      "question": "Run k-means with k = 2 on the points 1, 2, 10, 11 with initial centroids 1 and 10.",
+      "expected_answer": "Assign {1, 2} to centroid 1 and {10, 11} to centroid 10. Update centroids to 1.5 and 10.5. Reassigning changes nothing, so it converges with clusters {1, 2} and {10, 11}.",
+      "key_points": [
+        "assign step",
+        "centroids 1.5 and 10.5",
+        "no change so converged",
+        "clusters {1,2} and {10,11}"
+      ],
+      "source_section": "Unit 12.1 k-Means clustering"
+    },
+    {
+      "id": "ml-13",
+      "subject": "machine-learning",
+      "language": "hindi",
+      "answer_format": "compare",
+      "expected_source": "notes",
+      "question": "बैगिंग और बूस्टिंग में क्या अंतर है?",
+      "expected_answer": "बैगिंग में मॉडल समानांतर (parallel) रूप से with-replacement सैंपल पर ट्रेन होते हैं और वोट/औसत लिया जाता है; यह मुख्यतः variance घटाता है (उदाहरण: Random Forest)। बूस्टिंग में मॉडल क्रम से (sequential) ट्रेन होते हैं, हर मॉडल पिछले की गलतियों पर ध्यान देता है; यह मुख्यतः bias घटाता है (उदाहरण: AdaBoost, Gradient Boosting)।",
+      "key_points": [
+        "bagging parallel, bootstrap samples",
+        "bagging reduces variance, Random Forest",
+        "boosting sequential on errors",
+        "boosting reduces bias, AdaBoost and Gradient Boosting",
+        "answer in Hindi"
+      ],
+      "source_section": "Unit 11 Ensemble Learning"
+    },
+    {
+      "id": "ml-14",
+      "subject": "machine-learning",
+      "language": "hinglish",
+      "answer_format": "explain",
+      "expected_source": "notes",
+      "question": "perceptron XOR kyu nahi seekh sakta? aur MLP isko kaise solve karta hai",
+      "expected_answer": "Single perceptron sirf linearly separable functions seekh sakta hai (AND, OR); XOR linearly separable nahi hai. MLP me hidden layers aur non-linear activation functions hote hain, aur backpropagation se train hota hai, isliye woh non-linear patterns jaise XOR seekh leta hai.",
+      "key_points": [
+        "perceptron only linearly separable",
+        "XOR not linearly separable",
+        "MLP hidden layers with non-linear activations",
+        "trained with backpropagation",
+        "answer in Hinglish"
+      ],
+      "source_section": "Unit 13 Neural Networks"
+    },
+    {
+      "id": "mix-01",
+      "subject": "machine-learning",
+      "language": "hinglish",
+      "answer_format": "explain",
+      "expected_source": "notes",
+      "question": "pca kya hota hai aur kaise kaam karta hai? short me batao",
+      "expected_answer": "PCA ek dimensionality reduction technique hai. Steps: data standardise karo, covariance matrix nikalo, uske eigenvectors aur eigenvalues nikalo; eigenvectors principal components hain (maximum variance ki directions), top k rakh ke data project karo. Components orthogonal hote hain; PCA unsupervised hai aur sirf linear structure pakadta hai.",
+      "key_points": [
+        "dimensionality reduction",
+        "standardise, covariance, eigenvectors",
+        "components are directions of maximum variance",
+        "keep top k and project",
+        "answer in Hinglish"
+      ],
+      "source_section": "Unit 12.4 Principal Component Analysis"
+    },
+    {
+      "id": "mix-02",
+      "subject": "machine-learning",
+      "language": "english",
+      "answer_format": "explain",
+      "expected_source": "outside_notes",
+      "question": "Explain the Q-learning update rule in reinforcement learning.",
+      "expected_answer": "The notes mention reinforcement learning only as a type of ML and do not cover Q-learning. The tutor must say this is not in the notes, then give a clearly labelled general explanation: Q(s,a) := Q(s,a) + alpha [r + gamma max_a' Q(s',a') - Q(s,a)], and flag Q-learning as a gap.",
+      "key_points": [
+        "says it is not in the notes",
+        "labels the general answer",
+        "correct update rule with learning rate and discount factor",
+        "no fake citation"
+      ],
+      "source_section": "Not covered (Unit 1.2 mentions reinforcement learning only)"
+    }
+  ]
+}
