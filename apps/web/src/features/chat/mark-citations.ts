@@ -1,5 +1,6 @@
 const citationMark = /\[(\d{1,2}(?:\s*,\s*\d{1,2})*)\]/g;
-const protectedPart = /(```[\s\S]*?```|`[^`\n]*`|\$\$[\s\S]*?\$\$|\$[^$\n]+\$)/;
+const protectedPart =
+  /(```[\s\S]*?```|`[^`\n]*`|\$\$[\s\S]*?\$\$|\$(?:[^\s$]|[^\s$][^$\n]*[^\s$])\$(?!\d))/;
 
 export function markCitations(markdown: string, knownNumbers: number[]) {
   const known = new Set(knownNumbers);
